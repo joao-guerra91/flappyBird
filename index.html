@@ -11,21 +11,72 @@
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="container-fluid">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="game-intro">
         <div id="score-div">
-          <p>Score: <span id="score"><br> 0 </span></p>
+          <p>score:</p>
+          <span id="score"> 0 </span>
         </div>
-        <button id="start-button"> Start Game</button>
+        <!-- <button id="start-button"> Start Game</button> -->
+      </div>
+      <table class="high-score-table">
+        <tr>
+          <th><strong>High Score Table</strong></th> 
+        </tr>
+        <tr>
+          <th>HeroName</th>
+          <th>Score</th>
+        </tr>
+        <tr>
+          <td>Mr. Flappy</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>Mr. Green</td>
+          <td>44</td>
+        </tr>
+        <tr>
+          <td>Miss White</td>
+          <td>24</td>
+        </tr>
+        <tr>
+          <td>Mr. Blue</td>
+          <td>17</td>
+        </tr>
+        <tr>
+          <td>Mr. Blue</td>
+          <td>8</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <div id="game-board">
+        <canvas id="canvas" width="800" height="650"></canvas>
       </div>
     </div>
-    <div class="col-md-4">
-      <div id="game-board">
-        <canvas id="canvas" width="500" height="650"></canvas>
+    <div class="col-md-3">
+      <div id="change-player">
+        <h3>Choose Your Hero:</h3>
+        <ul>
+          <li><button id="mr-flappy"></button><p>Mr. Flappy</p></li>
+          <li><button id="mr-blue"></button><p>Mr. Blue</p></li>
+          <li><button id="mr-green"></button><p>Mr. Green</p></li>
+          <li><button id="miss-white"></button><p>Miss White</p></li>
+        </ul>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div id="game-over"> 
+        <p>GAME</p>  
+        <p>OVER</p>
+      </div>
+    </div>
+  </div>
+</div>
   <script src="./index.js"></script>
   <script src="./Bird.js"></script>
   <script src="./Game.js"></script>

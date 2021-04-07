@@ -90,6 +90,7 @@ function updateCanvas() {
 
     if (detectCollision(obstacle)) {
       currentGame.gameOver = true;
+      highScoreAlert()
       obstaclesFrequency = 0;
       // currentGame.score = 0;
       // document.getElementById('score').innerHTML = 0;
@@ -132,13 +133,64 @@ function updateCanvas() {
     }
   };
 
+//---------------------------------------BRAIN STORM---------------------------------------------------------//
 
+function highScoreAlert() {
+  let txt;
+  const person = prompt("Please enter your name:", "Player1");
+  if (person === null || person === "") {
+    txt = "User cancelled the prompt.";
+  } else {
+    txt = "Hello " + person + "! You are in the top5!";
+  } 
 
+  // const result = {userName: person, score: currentGame.score / 2}
+  localStorage.setItem(person, Math.floor(currentGame.score / 2));
+  
+  displayHighScore()
 
+}
 
+function displayHighScore() {
+  document.getElementById("highscores").innerHTML = "";
+  let highScores = [];
+  Object.keys(localStorage).forEach((key) => {
+    highScores.push({ player: key, score: localStorage.getItem(key) })
+  });
 
+  highScores.sort((a, b) => b.score - a.score);
+  console.log(highScores);
+  highScores.forEach((highScore)=> {
+    document.getElementById("highscores").innerHTML +=
+    `<tr>
+      <td>${highScore.player}</td>
+      <td>${highScore.score}</td>
+    </tr>`
+  });
 
+ 
+}
+displayHighScore()
 
+/*
+const result = {userName: user, score: timeScore}
+
+const savedScores = localStorage.getItem('highscore') || '[]' // get the score, or the initial value if empty
+  
+const highscores = [...JSON.parse(savedScores), result] // add the result
+  .sort((a, b) => b.score- a.score) // sort descending
+  .slice(0, 5) // take highest 5
+  
+  localStorage.setItem('highscore', JSON.stringify(highscores)) // store the scores
+*/
+
+//create an alert
+//prompt name of player
+// if name is an empty string or null send a message but dont save the name
+//if user saves name send message
+// if user saves name ----> save it on localStorage
+//sort the value in the HS-list from biggest to smallest
+// only take the top5 values --> slice 
 
 
 

@@ -4,7 +4,7 @@ body {
 }
 
 canvas{
-  background-image: url('../flappyBird/images/street.webp');
+  background-image: url('../flappyBird/images/street1.png');
   background-size: cover;
 }
 #game-board{

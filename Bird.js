@@ -8,6 +8,9 @@ class Bird {
     this.vx = 0;
     this.vy = 0.1;
     this.userPull = 0;
+    this.imageSrcBlue = "./images/MrBlues/up.png"
+    this.imageScrGreen = './images/McGreen/Mr-green-up.png'
+    this.imageScrWhite = './images/MissWhite/Miss-White-up.png'
   }
 
   draw(playerName) {
@@ -17,13 +20,13 @@ class Bird {
         image.src = './images/bird1.png';
           break;
       case 'Mr. Green':
-        image.src = './images/Mr-green.png';
+        image.src = this.imageScrGreen;
           break;
       case 'Mr. Blue':
-        image.src = './images/Mr-blue.png';
+        image.src = this.imageSrcBlue;
           break;
       case 'Miss White':
-        image.src = './images/Miss-White.png';
+        image.src = this.imageScrWhite;
           break;
     }
     context.drawImage(image, this.x, this.y, this.width, this.height)
@@ -31,8 +34,10 @@ class Bird {
 
   update() {
     this.hitBottom();
+    this.hitTop();
     this.vy = this.vy + (this.gravity - this.userPull);
     this.y += this.vy;
+   
   }
 
   hitBottom() {
@@ -41,9 +46,84 @@ class Bird {
         this.y = rockBottom;
         this.vy = 0;
     }
-
   }
+
+   hitTop() {
+     let stratosphere = 0 - 5*this.height;
+     if (this.y < stratosphere) {
+         this.y = 0;
+     }
+   }
 }
+
+
+
+//-----------------------------------SPRITES BRAIN STORM------------------------
+
+//-----Mr.Blues------
+
+// this.blueFlying = [
+//   "./images/MrBlues/up.png",
+//   "./images/MrBlues/middle.png",
+//   "./images/MrBlues/down.png",
+// ];
+// this.currentBlueFlyingIndex = 0;
+
+
+// drawBlueFlying() {
+//   if (this.currentBlueFlyingIndex === 2) {
+//     this.currentBlueFlyingIndex = 0;
+//   } else {
+//     this.currentBlueFlyingIndex += 1;
+//   }
+//   this.image.src = this.blueFlying[this.currentBlueFlyingIndex];
+//   this.draw();
+// }
+
+
+
+//------Mc Green------
+
+// this.greenFlying = [
+//   "./images/McGreen/Mr-green-down.png",
+//   "./images/McGreen/Mr-green-up.png",
+// ];
+// this.currentGreenFlyingIndex = 0;
+
+
+// drawGreenFlying() {
+//   if (this.currentGreenFlyingIndex === 1) {
+//     this.currentGreenFlyingIndex = 0;
+//   } else {
+//     this.currentGreenFlyingIndex += 1;
+//   }
+//   this.image.src = this.greenFlying[this.currentGreenFlyingIndex];
+//   this.draw();
+// }
+
+
+//---------Miss White-----------
+
+// this.greenFlying = [
+//   "./images/MissWhite/Miss-White-up.png",
+//   "./images/MissWhite/Miss-White-down.png",
+// ];
+// this.currentGreenFlyingIndex = 0;
+
+
+// drawGreenFlying() {
+//   if (this.currentGreenFlyingIndex === 1) {
+//     this.currentGreenFlyingIndex = 0;
+//   } else {
+//     this.currentGreenFlyingIndex += 1;
+//   }
+//   this.image.src = this.greenFlying[this.currentGreenFlyingIndex];
+//   this.drawPlayer();
+// }
+
+
+
+
 
 
 

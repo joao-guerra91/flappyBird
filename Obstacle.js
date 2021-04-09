@@ -16,7 +16,7 @@ class Obstacle {
     }
     context.drawImage(pipeImage, this.x, this.y, this.width, this.height)
   }
-
-
-
 }
+
+
+

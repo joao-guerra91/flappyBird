@@ -100,9 +100,6 @@ function updateCanvas() {
       document.getElementById('change-player').style.display  = 'block';
 
       cancelAnimationFrame(animationId);
-      // alert('BOOOM!');
-
-
     }
 
     if (obstacle.x < 0) {
@@ -124,16 +121,20 @@ function updateCanvas() {
     if(e.keyCode === 32) {
       console.log(currentGame.bird.userPull)
         currentGame.bird.userPull = 0.8;
+        currentGame.bird.imageSrcBlue = './images/MrBlues/down.png'
+        currentGame.bird.imageSrcGreen = './images/McGreen/Mr-green-down.png'
+        currentGame.bird.imageSrcWhite = './images/MissWhite/Miss-White-down.png'
     }
   };
 
   document.onkeyup = (e) => {
     if(e.keyCode === 32) {
         currentGame.bird.userPull = 0;
+        currentGame.bird.imageSrcBlue = './images/MrBlues/up.png'
+        currentGame.bird.imageSrcGreen = './images/McGreen/Mr-green-up.png'
+        currentGame.bird.imageSrcWhite = './images/MissWhite/Miss-White-up.png'
     }
   };
-
-//---------------------------------------BRAIN STORM---------------------------------------------------------//
 
 function highScoreAlert() {
   let txt;
@@ -141,7 +142,7 @@ function highScoreAlert() {
   if (person === null || person === "") {
     txt = "User cancelled the prompt.";
   } else {
-    txt = "Hello " + person + "! You are in the top5!";
+    txt = "Hello " + person + "! lets see if are in the top5!";
   } 
 
   // const result = {userName: person, score: currentGame.score / 2}
@@ -159,6 +160,7 @@ function displayHighScore() {
   });
 
   highScores.sort((a, b) => b.score - a.score);
+  highScores.splice(4, highScores.length - 5)
   console.log(highScores);
   highScores.forEach((highScore)=> {
     document.getElementById("highscores").innerHTML +=
@@ -172,25 +174,15 @@ function displayHighScore() {
 }
 displayHighScore()
 
-/*
-const result = {userName: user, score: timeScore}
 
-const savedScores = localStorage.getItem('highscore') || '[]' // get the score, or the initial value if empty
-  
-const highscores = [...JSON.parse(savedScores), result] // add the result
-  .sort((a, b) => b.score- a.score) // sort descending
-  .slice(0, 5) // take highest 5
-  
-  localStorage.setItem('highscore', JSON.stringify(highscores)) // store the scores
-*/
 
-//create an alert
-//prompt name of player
-// if name is an empty string or null send a message but dont save the name
-//if user saves name send message
-// if user saves name ----> save it on localStorage
-//sort the value in the HS-list from biggest to smallest
-// only take the top5 values --> slice 
+
+
+
+
+
+
+
 
 
 
